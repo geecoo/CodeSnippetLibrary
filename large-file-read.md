@@ -216,4 +216,4 @@
        print_r(array_slice($lines, 0, $n));
     }
     
-    
+** 一般我们 fseek 检索文件指针来处理大文件的逻辑操作, 主要用到  数据平均分块思想,  生成器yeild 或者 步长因子（类似memcahce存数据)**
