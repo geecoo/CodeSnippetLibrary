@@ -35,9 +35,94 @@
 
     print convert(memory_get_peak_usage()) . PHP_EOL;
     
+
 **The above example will output:**
 
     387.15 kb
-    12.8 mb
+    12.8 mb  //可以看出内存飙升
+
+
+## 使用分块 chunk 或 生成器 yield 解决
+
+### 分块读取
+
+    // chunk 循环整个文件, 1.5G
+    function readlargefile2($file) {
+        $i = 0;
+        $lines = [];
+        $fp = fopen($file, 'r');
+
+        $num = 10;
+        $chunk = 4096 * 3;
+        $readData = '';
+        $fs = sprintf("%u", filesize($file));
+
+        $max = (intval($fs) == PHP_INT_MAX) ? PHP_INT_MAX : filesize($file);
+
+        for ($len = 0; $len < $max; $len += $chunk)
+        {
+            /*
+            $readData = fread($fp, $chunk);
+            $i = $i + substr_count ($readData, PHP_EOL);
+            unset ($readData);
+            */
+
+            $readData = fread($fp, $chunk);
+            if (preg_match_all ("/\d{4}-\d{2}-\d{2}/", $readData, $parts)) {
+                //$lines = array_merge($lines, $parts[0]);
+                $i = $i + count($parts[0]);
+            }
+        }
+
+        fclose($fp);
+        //echo $data; 
+        //print_r(count($lines));
+        echo $i;
+        echo PHP_EOL;
+    }
+
+**The above example will output:**
+
+    397.27 kb    // 执行前内存峰值
+    5564474      // 逻辑处理结果
+    419.38 kb    // 执行后内存峰值
+    2.7169878482819  // 耗时
+
+
+### yeild 生成器
+
+    function readlargefile($path) {
+            $lines = [];
+            $handle = fopen($path, 'r');
+
+            while(!feof($handle) && ($buffer = fgets($handle)) !== false) {
+                yield trim($buffer);
+            }
+
+            fclose($handle);
+     }
+
+    $log1 = '/data/www/infp_crm_admin/storage/logs/pc.log';
+    $log2 = '/data/www/infp_crm_admin/storage/logs/laravel.log';
+
+
+    $iterator = readlargefile($log1);
+    $i = 0;
+
+    foreach ($iterator as $iteration) {
+        //
+        //$i = $i + 1;
+        if (preg_match_all ("/\d{4}-\d{2}-\d{2}/", $iteration, $parts)) {
+            $i = $i + count($parts[0]);
+        }
+    }
+    echo $i . PHP_EOL;
     
+**The above example will output:**
+
+    391.39 kb // 执行前内存峰值
+    5568542   // 逻辑处理结果
+    3.52 mb   // 执行后内存峰值
+    4.0124680995941  // 耗时
     
+** 总结, 如果遍历整个文件, 分块效率稍微高yeild一筹, 关键看处理逻辑, 分块有个缺点, 会导致字符串断裂, 所以在匹配IP或日期之类的数据时, 可能不准, yeild 内存峰值略高, 不过可以接受**
