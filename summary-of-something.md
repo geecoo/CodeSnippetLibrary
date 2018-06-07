@@ -4,6 +4,8 @@
 
     [Bootstrap Tagsinput](https://github.com/bootstrap-tagsinput/bootstrap-tagsinput)
   
-* INPUT框实现下拉
+* INPUT框实现自动完成
 
-    [Jquery ui autocomplete](http://jqueryui.com/autocomplete/)
+    [Jquery UI Autocomplete](http://jqueryui.com/autocomplete/)
+    
+    [jQuery Autocompleter](https://github.com/ArtemFitiskin/jquery-autocompleter)
