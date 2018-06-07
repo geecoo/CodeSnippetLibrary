@@ -68,5 +68,12 @@
     })
     ```
     
+    参考 
+    
+    [JqueryBarcode](https://github.com/bigbignerd/jQuery_barcode_listener)
+    
+    [jQuery监听扫码枪输入并禁止手动输入](https://www.cnblogs.com/skyfynn/p/6589866.html?utm_source=tuicool&utm_medium=referral)
+    
+    
     
     
