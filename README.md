@@ -2,7 +2,7 @@
 
 ## PHP ##
 * [PHP 处理大文件](https://github.com/geecoo/wiki/blob/master/large-file-read.md)
-* [PHP 的echo 、print 你真的懂了吗](https://github.com/geecoo/wiki/blob/master/echo-print.md)
+* [PHP 的echo 、print 吼吼](https://github.com/geecoo/wiki/blob/master/echo-print.md)
 
 
 ## JS ##
