@@ -65,5 +65,26 @@ $('.child', $('#parent'))
 ```
 1. 不要频繁使用.append()、.insertBefore()和.insetAfter(), 像插入SQL一样, 拼接一下, 一次性插入
 2. 如果你要对一个DOM元素进行大量处理，应该先用.detach()方法，把这个元素从DOM中取出来，处理完毕以后，再重新插回文档
+3. 如果你要在DOM元素上储存数据, 这涉及到js 的 全局方法 $.data() 和 原型方法 $('div').data() 缓存机制
+   var elem = $("#elem");
+   elem.data('id', 12);  是针对dom 对象
+   $.data(elem[0], 'id', 12); 针对 JQuery 对象,   注意,注意，注意, 尽量不要混用,  看下标0
+   
+   // 原型方法提供的方法
+   $(elem).data(key,value);
+   $(elem).removeData(key);
+   
+   // 全局方法提供的方法
+   $.data(elem,name)
+   $.removeData(elem,name)
+   $.hasData(elem)
+   
+   // $.text
+   var el = $('#logo-title');
+   $.text(el);  直接用全局函数 比 操纵 el.text() 对象方法要快的多
 ```
+
+# 总结 #
+能用原生就用原生, 话又说回来, 现代浏览器性能刚刚的, 大家怎么开心就怎么用, 效率嘛~  你自己说, 能慢哪儿去
+
 
