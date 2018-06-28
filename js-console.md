@@ -35,9 +35,34 @@ var log = {name: 'error', show: function () { console.info('test');}};
 console.dir(log);
 ```
 
-* 显示某个节点的内容, 打印对象原生的html代码
+* 显示某个节点的内容, 打印原生对象的html代码, JQ对象的打印还是对象结构
 ```
 var info = document.getElementById('info');
 console.dirxml(info);
+```
+
+* 判断变量是否是真
+
+```
+console.assert(year == 2018 );
+```
+
+* 追踪函数的调用轨迹
+```
+console.trace();
+```
+* 计时功能
+```
+console.time("timer1");
+@TODO 
+console.timeEnd("timer1");
+```
+
+* 性能分析
+```
+console.profile('性能分析器');
+@TODO 
+console.profileEnd();
+看火狐
 ```
 
