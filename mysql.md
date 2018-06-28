@@ -21,3 +21,5 @@ create temporary table tmp_table (   name varchar(10) not null,   value integer 
 
 1. memory临时表由于表的增大 可能会转变为myisam临时表——其转化临界点由max_heap_table_size 和tmp_table_size系统变量的 较小值 决定的
 2. 当不需要临时表时, 必须显式 truncate table tb; drop table tb;
+
+
