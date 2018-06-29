@@ -10,6 +10,8 @@
 * [JS 因精度问题导致误差](https://github.com/geecoo/wiki/blob/master/js-calculation.md)
 * [JS 里 $.proxy 、 call 、 apply 的区别](https://github.com/geecoo/wiki/blob/master/js-proxy-call-apply.md)
 * [JQuery 一些优化建议](https://github.com/geecoo/wiki/blob/master/jquery-optimization.md) 
+* [JS console常用方法](https://github.com/geecoo/wiki/blob/master/js-console.md) 
+
 
 ## MYSQL ##
 * [MYSQL 内存表、临时表、视图](https://github.com/geecoo/wiki/blob/master/mysql.md)
