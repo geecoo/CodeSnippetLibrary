@@ -4,12 +4,12 @@
 
 > [命令](https://github.com/memcached/memcached/wiki/Commands)
   
-* 介绍
+### 介绍
 Memcached 是一个高性能的分布式内存对象缓存系统, 用于动态Web应用以减轻数据库负载. 
 它通过在内存中缓存数据和对象来减少读取数据库的次数, 从而提供动态数据库、提高网站的访问速度。
 Memcached基于一个存储键/值对的hashmap. 其守护进程(daemon )是用C写的, 但是客户端可以用任何语言来编写，并通过memcached协议与守护进程通信
 
-* 特点
+### 特点
 1. 协议简单
 
 2. 基于libevent的事件处理
@@ -18,7 +18,7 @@ Memcached基于一个存储键/值对的hashmap. 其守护进程(daemon )是用C
 
 4. 采用不互相通信的分布式
 
-* 缺点
+### 缺点
 
 1. 重启memcached服务器或者操作系统会使数据消失
 
@@ -26,11 +26,11 @@ Memcached基于一个存储键/值对的hashmap. 其守护进程(daemon )是用C
 
 * memcached 安装
 
-移步 centos库, 里面有脚本
+  移步 centos库, 里面有脚本
 
 
 
-* 启动参数
+### 启动参数
 1. -d 选项是启动一个守护进程                                                                                                                               
 2. -m 是分配给Memcache使用的内存数量, 默认64MB                                                                                                              
 3. -u 是运行Memcache的用户, 不要用root, 指定用户如 www                                                                                                                                
@@ -43,7 +43,7 @@ Memcached基于一个存储键/值对的hashmap. 其守护进程(daemon )是用C
 
 9. -e 自定义Escape character, 退出命令符好, 默认 ^] (Ctrl + ])
 
-* telnet 127.0.0.1 11211
+### telnet 127.0.0.1 11211
 
 ```
 <command name> <key> <flags> <exptime> <bytes>
