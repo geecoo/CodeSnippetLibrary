@@ -65,7 +65,7 @@ Memcached基于一个存储键/值对的hashmap. 其守护进程(daemon )是用C
 <data block>：存储的数据块（可直接理解为key-value结构中的value）
 ```
 
-1. set添加或者编辑
+1. set添加或者编辑 ( 注意 cas命令, Check And Set or Compare And Swap)
 ```
 set name 0 0 5
 linux
@@ -102,7 +102,8 @@ STORED
 6. stats 打印当前服务器各项指标值
 7. flush_all  清掉所有缓存数据
 
-* 退出 telnet
+### 退出 telnet
+
 ```
 Escape character is '^]'
 
@@ -116,3 +117,5 @@ Escape character is '^]'.
 Connection closed by foreign host.
 
 ```
+
+
