@@ -1,7 +1,30 @@
 ## 主题 memcached
 
+* 介绍
+Memcached 是一个高性能的分布式内存对象缓存系统, 用于动态Web应用以减轻数据库负载. 
+它通过在内存中缓存数据和对象来减少读取数据库的次数, 从而提供动态数据库、提高网站的访问速度。
+Memcached基于一个存储键/值对的hashmap. 其守护进程(daemon )是用C写的, 但是客户端可以用任何语言来编写，并通过memcached协议与守护进程通信
+
+* 特点
+1. 协议简单
+
+2. 基于libevent的事件处理
+
+3. 内置内存存储方式
+
+4. 采用不互相通信的分布式
+
+* 缺点
+
+1. 重启memcached服务器或者操作系统会使数据消失
+
+2. 内存容量达到指定值之后，就会使用LRU算法自动删除不使用或者很少使用的缓存
+
 * memcached 安装
-略过
+
+移步 centos库, 里面有脚本
+
+
 
 * 启动参数
 1. -d 选项是启动一个守护进程                                                                                                                               
@@ -24,7 +47,7 @@
 
 <command name>：set/add/replace
 <key>：查找关键字
-<flags>：整型参数，客户机使用它存储关于键值对的额外信息
+<flags>： 32bit 整型参数 
 <exptime>：该数据的存活时间（以秒为单位，0 表示永远） 
 <bytes>：存储字节数
 <data block>：存储的数据块（可直接理解为key-value结构中的value）
@@ -66,6 +89,9 @@ STORED
 ```
 6. stats 打印当前服务器各项指标值
 7. flush_all  清掉所有缓存数据
+
+更多命令请访问官网
+https://github.com/memcached/memcached/wiki/Commands
 
 * 退出 telnet
 ```
