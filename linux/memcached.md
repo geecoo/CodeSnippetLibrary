@@ -1,5 +1,9 @@
 ## 主题 memcached
 
+> [memcached协议](https://github.com/memcached/memcached/blob/master/doc/protocol.txt)
+
+> [命令](https://github.com/memcached/memcached/wiki/Commands)
+  
 * 介绍
 Memcached 是一个高性能的分布式内存对象缓存系统, 用于动态Web应用以减轻数据库负载. 
 它通过在内存中缓存数据和对象来减少读取数据库的次数, 从而提供动态数据库、提高网站的访问速度。
@@ -47,7 +51,15 @@ Memcached基于一个存储键/值对的hashmap. 其守护进程(daemon )是用C
 
 <command name>：set/add/replace
 <key>：查找关键字
-<flags>： 32bit 整型参数 
+<flags>： 整型参数(十进制数, 以存储16位或32位存储, 看版本)，客户使用它存储额外信息
+<flags> is an arbitrary 16-bit unsigned integer (written out in
+  decimal) that the server stores along with the data and sends back
+  when the item is retrieved. Clients may use this as a bit field to
+  store data-specific information; this field is opaque to the server.
+  Note that in memcached 1.2.1 and higher, flags may be 32-bits, instead
+  of 16, but you might want to restrict yourself to 16 bits for
+  compatibility with older versions.
+  
 <exptime>：该数据的存活时间（以秒为单位，0 表示永远） 
 <bytes>：存储字节数
 <data block>：存储的数据块（可直接理解为key-value结构中的value）
@@ -89,9 +101,6 @@ STORED
 ```
 6. stats 打印当前服务器各项指标值
 7. flush_all  清掉所有缓存数据
-
-更多命令请访问官网
-https://github.com/memcached/memcached/wiki/Commands
 
 * 退出 telnet
 ```
