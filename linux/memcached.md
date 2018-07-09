@@ -118,4 +118,32 @@ Connection closed by foreign host.
 
 ```
 
+## 其它
+
+[通读缓存回掉](http://php.net/manual/zh/memcached.callbacks.read-through.php)
+
+[结果回调](http://php.net/manual/zh/memcached.callbacks.result.php)
+
+## cas_token 在PHP 7 中失效的问题
+
+```
+ function memcacheGet($key, $cb = null, &$cas = null) {
+   global $mc;
+   if(empty($mc)) return false;
+
+   if(defined('Memcached::GET_EXTENDED')) {
+      //Incompatible change in php7, 增加了 flag参数
+      $_o = $mc->get($key, $cb, Memcached::GET_EXTENDED);                                                                                                                            
+      $o = $_o['value'];
+      $cas = $_o['cas'];
+   } else { 
+      $o = $m->get($key, $cb, $cas);
+   } 
+    return $o;
+} 
+```
+
+[失效问题看这里 1](https://github.com/php-memcached-dev/php-memcached/pull/214)
+[失效问题看这里 2](http://php.net/manual/zh/memcached.get.php)
+
 
