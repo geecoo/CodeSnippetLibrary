@@ -127,6 +127,7 @@ Connection closed by foreign host.
 ## cas_token 在PHP 7 中失效的问题
 
 ```
+ 解决方案
  function memcacheGet($key, $cb = null, &$cas = null) {
    global $mc;
    if(empty($mc)) return false;
@@ -144,6 +145,15 @@ Connection closed by foreign host.
 ```
 
 [失效问题看这里 1](https://github.com/php-memcached-dev/php-memcached/pull/214)
+
 [失效问题看这里 2](http://php.net/manual/zh/memcached.get.php)
 
+## flags 参数详解
+[点我](https://blog.csdn.net/yanhui_wei/article/details/8138874)
 
+## cas 可用秒杀场景
+
+## 数据存储原理
+一致性哈希原则
+
+## slab获取多个key
