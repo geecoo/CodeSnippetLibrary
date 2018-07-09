@@ -14,6 +14,8 @@
 
 8. -s 以socket方式来访问memcached, memcached的socket文件路径,启动服务时, 去掉参数 -l 和 -p
 
+9. -e 自定义Escape character, 退出命令符好, 默认 ^] (Ctrl + ])
+
 * telnet 127.0.0.1 11211
 
 ```
@@ -65,4 +67,17 @@ STORED
 6. stats 打印当前服务器各项指标值
 7. flush_all  清掉所有缓存数据
 
+* 退出 telnet
+```
+Escape character is '^]'
 
+Ctrl + ]  然后输入 quit
+
+脚本里如何退出
+$ echo "" | telnet 127.0.0.1 11211
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+Connection closed by foreign host.
+
+```
