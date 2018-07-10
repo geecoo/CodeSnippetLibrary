@@ -1,8 +1,8 @@
 ## 主题 memcached
 
-> [memcached协议](https://github.com/memcached/memcached/blob/master/doc/protocol.txt)
+> [资料-memcached协议](https://github.com/memcached/memcached/blob/master/doc/protocol.txt)
 
-> [命令](https://github.com/memcached/memcached/wiki/Commands)
+> [资料-命令wiki](https://github.com/memcached/memcached/wiki/Commands)
   
 ### 介绍
 Memcached 是一个高性能的分布式内存对象缓存系统, 用于动态Web应用以减轻数据库负载. 
@@ -120,9 +120,9 @@ Connection closed by foreign host.
 
 ## 其它
 
-[通读缓存回掉](http://php.net/manual/zh/memcached.callbacks.read-through.php)
+[资料-通读缓存回掉](http://php.net/manual/zh/memcached.callbacks.read-through.php)
 
-[结果回调](http://php.net/manual/zh/memcached.callbacks.result.php)
+[资料-结果回调](http://php.net/manual/zh/memcached.callbacks.result.php)
 
 ## cas_token 在PHP 7 中失效的问题
 
@@ -149,7 +149,7 @@ Connection closed by foreign host.
 [失效问题看这里 2](http://php.net/manual/zh/memcached.get.php)
 
 ## flags 参数详解
-[点我](https://blog.csdn.net/yanhui_wei/article/details/8138874)
+[资料-flags详解](https://blog.csdn.net/yanhui_wei/article/details/8138874)
 
 ## cas 可用秒杀场景 (系统级（Memcache自身提供）的冲突检测机制（乐观锁）), 关于秒杀方案，请看我的另一篇文章
 
@@ -199,6 +199,7 @@ get_misses：失败的次数
 
 
 ## 数据分布式存储原理
+[资料-分布式缓存实现原理](https://www.cnblogs.com/weixing/p/5522903.html)
 
 * 余数计算分散法(取模法)
 
@@ -218,3 +219,4 @@ get_misses：失败的次数
 > 使用consistent Hashing最大限度的抑制了键的重新分配，且有的consistent Hashing的实现方式还采用了虚拟节点的思想。问题起源于使用一般hash函数的话，服务器的映射地点的分布非常不均匀，从而导致数据库访问倾斜，大量的key被映射到同一台服务器上。为了避免这个问题，引入了虚拟节点的机制，为每台服务器计算出多个hash值，每个值对应环上的一个节点位置，这种节点叫虚拟节点。而key的映射方式不变，就是多了层从虚拟节点再映射到物理机的过程。这种优化下尽管物理机很少的情况下，只要虚拟节点足够多，也能够使用得key分布的相对均匀
 
 ## slab获取多个key
+
