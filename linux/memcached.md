@@ -234,7 +234,11 @@ get_misses：失败的次数
 
 1. 对查询结果为空的情况也进行缓存，缓存时间设置短一点，或者该key对应的数据insert了之后清理缓存
 
-2. 对一定不存在的key进行过滤。可以把所有的可能存在的key放到一个大的Bitmap中，查询时通过该bitmap过滤
+2. 如果key有一定规则, 则采取规则验证机制、过滤无效key
+
+3. 对一定不存在的key进行过滤。可以把所有的可能存在的key放到一个大的Bitmap中，查询时通过该bitmap过滤
+
+   方案, 采用布隆过滤器, 如果允许小概率误判 ! [详情 点击](https://blog.csdn.net/qianshangding0708/article/details/48030057)
 
 ## 数据分布式存储原理
 
@@ -259,3 +263,20 @@ get_misses：失败的次数
 
 ## slab内存管理
 [内存管理和slab结构图](https://blog.csdn.net/yxnyxnyxnyxnyxn/article/details/7869900)
+
+## 缓存算法
+
+1. FIFO算法：First in First out
+
+   先进先出. 原则：一个数据最先进入缓存中，则应该最早淘汰掉。也就是说，当缓存满的时候，应当把最先进入缓存的数据给淘汰掉
+
+2. LFU算法：Least Frequently Used 
+
+   最不经常使用算法
+
+3. LRU算法：Least Recently Used
+
+   近期最少使用算法. 请查看：[Memcached之你真正理解LRU吗](https://blog.csdn.net/qianshangding0708/article/details/47980697)
+
+   LRU和LFU的区别. LFU算法是根据在一段时间里数据项被使用的次数选择出最少使用的数据项，即根据使用次数的差异来决定. 而LRU是根据使用时间的差异来决定的.
+
