@@ -212,19 +212,32 @@ get_misses：失败的次数
 2. 凌晨定时更新一批常用的缓存
 
 3. 利用memcache加key的方式增加mutex key (互斥锁) 
+
    https://timyang.net/programming/memcache-mutex/
    
 4. 利用gearman
+
    http://lists.danga.com/pipermail/memcached/2007-July/004858.html
+   
    http://lists.danga.com/pipermail/memcached/2007-July/004863.html
    
 5. PHP lock
    https://code.google.com/p/phplock/
 
 6. memcached作者Brad Fitzpatrick用Go开发了替代版 groupcache，比memcached更多功能，一个亮点就是解决了雪崩的问题。
+
    groupcache 项目地址：https://github.com/golang/groupcache
-  
+
+## 缓存穿透
+
+> 一般的缓存系统，都是按照key去缓存查询，如果不存在对应的value，就应该去后端系统查找（比如DB）。如果key对应的value是一定不存在的，并且对该key并发请求量很大，就会对后端系统造成很大的压力
+
+1. 对查询结果为空的情况也进行缓存，缓存时间设置短一点，或者该key对应的数据insert了之后清理缓存
+
+2. 对一定不存在的key进行过滤。可以把所有的可能存在的key放到一个大的Bitmap中，查询时通过该bitmap过滤
+
 ## 数据分布式存储原理
+
 [分布式缓存实现原理](https://www.cnblogs.com/weixing/p/5522903.html)
 
 * 余数计算分散法(取模法)
