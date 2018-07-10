@@ -1,8 +1,8 @@
 ## 主题 memcached
 
-> [资料-memcached协议](https://github.com/memcached/memcached/blob/master/doc/protocol.txt)
+> [memcached协议](https://github.com/memcached/memcached/blob/master/doc/protocol.txt)
 
-> [资料-命令wiki](https://github.com/memcached/memcached/wiki/Commands)
+> [命令wiki](https://github.com/memcached/memcached/wiki/Commands)
   
 ### 介绍
 Memcached 是一个高性能的分布式内存对象缓存系统, 用于动态Web应用以减轻数据库负载. 
@@ -120,9 +120,9 @@ Connection closed by foreign host.
 
 ## 其它
 
-[资料-通读缓存回掉](http://php.net/manual/zh/memcached.callbacks.read-through.php)
+[通读缓存回掉](http://php.net/manual/zh/memcached.callbacks.read-through.php)
 
-[资料-结果回调](http://php.net/manual/zh/memcached.callbacks.result.php)
+[结果回调](http://php.net/manual/zh/memcached.callbacks.result.php)
 
 ## cas_token 在PHP 7 中失效的问题
 
@@ -149,7 +149,7 @@ Connection closed by foreign host.
 [失效问题看这里 2](http://php.net/manual/zh/memcached.get.php)
 
 ## flags 参数详解
-[资料-flags详解](https://blog.csdn.net/yanhui_wei/article/details/8138874)
+[flags详解](https://blog.csdn.net/yanhui_wei/article/details/8138874)
 
 ## cas 可用秒杀场景 (系统级（Memcache自身提供）的冲突检测机制（乐观锁）), 关于秒杀方案，请看我的另一篇文章
 
@@ -197,9 +197,35 @@ get_misses：失败的次数
 
 ## memcache 雪崩
 
+1. 缓存失效（重启、增加删除节点、缓存周期性的失效）
 
+2. 失效后, 第一个进程去数据库获取新数据, 假如包括SQL+程序逻辑耗时5S、
+
+3. 这5S内, 第二个、第三个...第N个都只是获取到已失效的缓存, 于是也都连接数据库...
+
+4. 结果显而易见, 数据库锁表 -> 数据库累计大量进程 -> 直至数据库挂掉
+
+解决方案
+
+1. 不同的key, 设置不同的过期时间, 让缓存失效的时间点尽量均匀
+
+2. 凌晨定时更新一批常用的缓存
+
+3. 利用memcache加key的方式增加mutex key (互斥锁) 
+   https://timyang.net/programming/memcache-mutex/
+   
+4. 利用gearman
+   http://lists.danga.com/pipermail/memcached/2007-July/004858.html
+   http://lists.danga.com/pipermail/memcached/2007-July/004863.html
+   
+5. PHP lock
+   https://code.google.com/p/phplock/
+
+6. memcached作者Brad Fitzpatrick用Go开发了替代版 groupcache，比memcached更多功能，一个亮点就是解决了雪崩的问题。
+   groupcache 项目地址：https://github.com/golang/groupcache
+  
 ## 数据分布式存储原理
-[资料-分布式缓存实现原理](https://www.cnblogs.com/weixing/p/5522903.html)
+[分布式缓存实现原理](https://www.cnblogs.com/weixing/p/5522903.html)
 
 * 余数计算分散法(取模法)
 
@@ -218,5 +244,5 @@ get_misses：失败的次数
 * 优化的Consistent Hashing算法(虚拟节点的思想以解决key分布不均匀的问题)
 > 使用consistent Hashing最大限度的抑制了键的重新分配，且有的consistent Hashing的实现方式还采用了虚拟节点的思想。问题起源于使用一般hash函数的话，服务器的映射地点的分布非常不均匀，从而导致数据库访问倾斜，大量的key被映射到同一台服务器上。为了避免这个问题，引入了虚拟节点的机制，为每台服务器计算出多个hash值，每个值对应环上的一个节点位置，这种节点叫虚拟节点。而key的映射方式不变，就是多了层从虚拟节点再映射到物理机的过程。这种优化下尽管物理机很少的情况下，只要虚拟节点足够多，也能够使用得key分布的相对均匀
 
-## slab获取多个key
-
+## slab内存管理
+[内存管理和slab结构图](https://blog.csdn.net/yxnyxnyxnyxnyxn/article/details/7869900)
