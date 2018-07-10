@@ -215,6 +215,8 @@ get_misses：失败的次数
 
    https://timyang.net/programming/memcache-mutex/
    
+   https://blog.csdn.net/rainkid/article/details/6802867
+   
 4. 利用gearman
 
    http://lists.danga.com/pipermail/memcached/2007-July/004858.html
