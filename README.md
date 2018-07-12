@@ -16,6 +16,9 @@
 ## MYSQL ##
 * [MYSQL 内存表、临时表、视图](https://github.com/geecoo/wiki/blob/master/mysql.md)
 
+## 编码规范
+
+* [前端css/js编码规范](https://guide.aotu.io/docs/js/code.html)
 
 ## 工具篇
 * [翻墙XX-Net](https://github.com/XX-net/XX-Net)
