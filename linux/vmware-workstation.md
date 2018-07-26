@@ -70,7 +70,14 @@ GATEWAY=10.88.0.1
 ```
 > 注意,  HOSTNAME要和HOST一致
 
-11. 
+11.  重装系统之前， 尝试一下步骤
+     0. 重装vmware-workstation, 选择修复功能、修复一下软件
+     1. 还原默认配置
+     2. 删除机网络适配器, 重新添加
+     3. 将BOOTPROTO=static 改为 BOOTPROTO=dhcp, 注释掉IPADDR、 NETMASK、NETWORK等静态配置
+     4. ping 下baidu.com试试, 如果ping通网关, 再改回静态IP配置即可
+     
+12. 最后，以上步骤都OK, 还是上不了网, 重装吧
 
 
 
