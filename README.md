@@ -22,3 +22,6 @@
 
 ## 工具篇
 * [翻墙XX-Net](https://github.com/XX-net/XX-Net)
+
+## 其他
+* [优秀的站点](https://github.com/geecoo/wiki/blob/master/goodsite.md)
