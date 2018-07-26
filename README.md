@@ -16,6 +16,9 @@
 ## MYSQL ##
 * [MYSQL 内存表、临时表、视图](https://github.com/geecoo/wiki/blob/master/mysql.md)
 
+## LINUX ##
+* [虚拟机关机后再打开不能上网排查步骤](https://github.com/geecoo/wiki/blob/master/linux/vmware-workstation.md)
+
 ## 编码规范
 
 * [前端css/js编码规范](https://guide.aotu.io/docs/js/code.html)
@@ -25,3 +28,5 @@
 
 ## 其他
 * [优秀的站点](https://github.com/geecoo/wiki/blob/master/goodsite.md)
+
+
