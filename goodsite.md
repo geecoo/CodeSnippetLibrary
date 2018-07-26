@@ -3,3 +3,7 @@
 * [基于Bootstrap 4的静态页面](https://github.com/pratikborsadiya/vali-admin)
 
 * [bootstrap皮肤定制](https://github.com/thomaspark/bootswatch)
+
+* [Google字体 CDN](http://www.googlefonts.cn/)
+
+* [Google字体 CDN](https://www.font.im/)
