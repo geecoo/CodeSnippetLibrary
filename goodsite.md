@@ -9,3 +9,7 @@
 * [Google字体 CDN](https://www.font.im/)
 
 * [前后端分离 mockServer服务器](https://github.com/flftfqwxf/mockserver)
+
+* [尤雨溪 - 有个彩带背景](http://evanyou.me/)
+
+* [彩带JS](https://github.com/hustcc/ribbon.js)
