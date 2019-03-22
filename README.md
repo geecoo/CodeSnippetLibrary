@@ -3,6 +3,9 @@
 ## PHP ##
 * [PHP 处理大文件](https://github.com/geecoo/wiki/blob/master/large-file-read.md)
 * [PHP 的echo 、print 吼吼](https://github.com/geecoo/wiki/blob/master/echo-print.md)
+* [Memcached 与 Redis 实现的对比](https://cloud.tencent.com/developer/article/1004377)
+* [如何解决秒杀的性能问题和超卖的讨论](https://blog.csdn.net/zhoudaxia/article/details/38067003)
+* [PHP面试题](https://learnku.com/articles/20714)
 
 
 ## JS ##
@@ -15,9 +18,13 @@
 
 ## MYSQL ##
 * [MYSQL 内存表、临时表、视图](https://github.com/geecoo/wiki/blob/master/mysql.md)
+* [MySQL 数据库设计总结](https://cloud.tencent.com/developer/article/1004367)
+* [MySQL数据库之MyISAM与InnoDB的区别](https://blog.csdn.net/chajinglong/article/details/56666771)
+
 
 ## LINUX ##
 * [虚拟机关机后再打开不能上网排查步骤](https://github.com/geecoo/wiki/blob/master/linux/vmware-workstation.md)
+* [大话 Select、Poll、Epoll](https://cloud.tencent.com/developer/article/1005481)
 
 ## 编码规范
 
